@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>白川政志 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>白川政志 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. ウェルス・コンサルティング株式会社</a>
+  <a href="#k2">2. 株式会社Voicy</a>
+  <a href="#k3">3. 株式会社ソーシャルインテリア</a>
+  <a href="#k4">4. 株式会社トーガシ</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">事業責任者（COO候補）</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">ウェルス・コンサルティング株式会社</div>
+  <div class="co-url"><a href="https://w-c.co.jp/" target="_blank">https://w-c.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区東1-26-30 SHIBUYA EAST BLDG8F</td></tr><tr><th>設立</th><td>2009年</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    医療業界×デジタルマーケティング×コンサルティングの急成長企業での経営トップポジション。1000億円規模・時価総額1兆円を目指す高い志を持つベンチャー。オーナー経営者との直接関係構築機会
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2009年の創業以来、ウェルス・コンサルティングは「豊かな人を∞に増やす」というビジョンのもと、驚異的な成長を遂げています。現在は約50兆円超のマーケットサイズと言われる医療業界特化の総合コンサルティング企業として、全国のクリニックを対象に成長を牽引しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2009年の創業以来、ウェルス・コンサルティングは「豊かな人を∞に増やす」というビジョンのもと、驚異的な成長を遂げています。現在は約50兆円超のマーケットサイズと言われる医療業界特化の総合コンサルティング企業として、全国のクリニックを対象に成長を牽引しています。</p><p>同社の最大の魅力は、コロナ禍でも売上高前年比135％を達成した圧倒的な成長力です。すでに700クリニックとの取引実績を持ち、約85％の高いリピート率を誇っています。</p><p>医療業界の集患支援と人材紹介を柱に、マーケティング支援（SNS・広告運用）から開業支援、経営コンサルまで一気通貫でサービスを提供し、業界の透明性向上と発展に貢献しています。特筆すべきは自社クリニック「hana beauty clinic」をテストセンターとして活用し、机上の空論ではない実証データに基づくコンサルティングを展開している点です。2023年には医師専門のスポットバイト紹介事業も開始し、今後は、プラットフォーム化に向けて常に新しい価値創造に挑戦し続けています。※特に美容医療マーケットにおいては絶大な強みを持っております。</p><p>同社の企業文化は「やりたいことはやってみる」という挑戦精神に満ち溢れています。平均年齢28歳の若々しい組織で、インターン生でも管理職に登用される実力主義の環境が整っています。権限委譲を積極的に行い、若手スタッフにも大きな裁量権を与えることで、外資系ファーム、起業、リクルート、MBA、メガベンチャーなど多彩なキャリアを歩む卒業生を輩出してきました。「100事業100経営者」という壮大なビジョンのもと、新規事業の立ち上げが続々と進んでおり、将来の経営者候補として成長できる環境は他に類を見ません。この会社では単なる業務経験ではなく、真の起業家精神と実践的なビジネススキルを身につけることができます。</p><p><strong>代表取締役社長　藤城健作氏</strong><br>千葉県館山市出身。大手投資用不動産会社で最年少管理職、大手経営コンサルティングファームを経て2009年にウェルス・コンサルティングを創業。「日本を元気にする」という壮大な使命を胸に、業界の枠を超えて事業を推進する情熱的なリーダー。商売人の街で育った影響で強い起業家精神を持ち、権限委譲による人材育成と新規事業創出に対する並々ならぬ情熱を持つ。同氏の「20代に濃縮しろ」「脳に汗をかけ」という指導理念は、多くの若手起業家を輩出する原動力となっている。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業責任者（COO候補）</div>
+          <div class="job-preview">医療業界特化コンサル事業の事業統括・組織変革・成長戦略を担うCOO候補</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【「ウェルス・コンサルティング事業」の課題】</strong><br>下記の事業目標に対し、ノウハウ・成果が俗人的でもあり、「再現性の組織浸透」が最大の課題</p><ul><li>市場一番のポジション確立へ、マーケ支援・コンサル領域の再現性を高め、保険診療での拡張を加速</li><li>今後の多店舗展開に対応するため、オペ標準化・KPI設計・地域特性に応じた集客モデル等、勝ちパターンの横展開を強化</li></ul><p><strong>【基本業務内容】</strong></p><ul><li>既存事業（マーケティング支援）の事業戦略立案、事業推進、組織マネジメント全般をCOO候補として期待</li><li>マーケIS-FS-CSの事業統括全般（現在はトータルで社員10名＋業務委託数名の体制、今後増員も計画）</li><li>属人的な事業構造から再現性ある組織への変革構築（採用・育成、評価制度、ナレッジ管理、プレイブック整備、トレーニング設計と運用）</li></ul><p><strong>【その先の期待アビリティ】</strong></p><ul><li>事業モデル・ターゲットの見直しを含む大胆な事業・組織変革の推進</li><li>既存の延長線ではない非連続成長の推進</li></ul><p>ゆくゆくは上記のアビリティまで最大限発揮頂き、今後の売上目標100億円以上の実現のためスケーリング戦略の立案・実行、新規事業立ち上げ（M&A仲介・買収他）、グローバル展開の具体化、データドリブン経営システムの構築などを共に担っていただきます。</p><p><strong>応募資格：</strong></p><p><span class='tag tag-must'>MUST</span> SaaS・ベンチャー・コンサルティング業界での事業開発または新規事業立ち上げ経験<br><span class='tag tag-must'>MUST</span> 経営層との関係構築・協働経験<br><span class='tag tag-must'>MUST</span> 複数事業の同時推進マネジメント経験<br><span class='tag tag-must'>MUST</span> ビジネスパートナーシップ構築経験（M&A・提携等）<br><span class='tag tag-must'>MUST</span> データ活用の実務経験</p><p><span class='tag tag-want'>WANT</span> 医療業界知見<br><span class='tag tag-want'>WANT</span> M&A経験<br><span class='tag tag-want'>WANT</span> グローバル展開経験<br><span class='tag tag-want'>WANT</span> データドリブン経営</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://w-c.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/1Xt72lpeOgZdV2JVBKidC4UO7jzkW9dHm/view?usp=sharing" target="_blank">📄 会社資料</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">COO事業責任者</span><span class="badge badge-blue">未上場・N-2</span></div>
+  <div class="co-name">株式会社Voicy</div>
+  <div class="co-url"><a href="https://corp.voicy.jp/" target="_blank">https://corp.voicy.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区南平台町2番17号 A-PLACE渋谷南平大 3階</td></tr><tr><th>上場区分</th><td>未上場</td></tr><tr><th>上場準備状況</th><td>N-2期</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>日本の音声市場のパイオニア！成長フェーズに参画できる貴重なチャンス</li><li>累計36億円の資金調達済！強固な基盤を持ちながらチャレンジできる環境</li><li>パーソナリティ支援×企業向け音声サービスの二軸で事業展開</li><li>グローバル市場でも注目の音声領域で、日本から新たな文化を創れる！</li><li>「できあがっていない」フェーズだからこそ、新規事業の立案やアライアンス経験が積める</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">Voicyは「音声のインフラ化」を目指し、世界的に注目される音声市場で急成長しているスタートアップです。AppleやSpotifyが音声領域へ注力するなか、日本国内で音声プラットフォームの先駆者として確固たる地位を築いています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>Voicyは「音声のインフラ化」を目指し、世界的に注目される音声市場で急成長しているスタートアップです。AppleやSpotifyが音声領域へ注力するなか、日本国内で音声プラットフォームの先駆者として確固たる地位を築いています。</p><p><strong>●パーソナリティ支援：</strong>音声メディアとしての影響力が拡大し、配信者への企業スポンサー総額は 1億円超</p><p><strong>●企業向け事業「Voicy Biz」：</strong>社内コミュニケーションや広報PRを支援し、大手企業にも導入中。</p><p><strong>●音声の未来を創る3つの軸</strong></p><ul><li><strong>メディア化：</strong>審査制を取り入れ、魅力的なパーソナリティを増やす</li><li><strong>プラットフォーム化：</strong>新機能追加＆リスナー向けサービスを強化</li><li><strong>インフラ化：</strong>音声を社会と結びつけ、新たな産業へ</li></ul><p><strong>資金調達状況：</strong><br>2022年7月、27.3億円の資金調達を実施。累計調達額36億円を突破し、さらなる成長を加速中！</p><p>組織を60名から30名に縮小し、No.2とNo.3が退任という大規模な人事改革を実施しました。当時は、社長が不在でも回る組織を目指して権限を分散し、COO的な役割を担ってもらっていましたが、次第に派閥が生まれ、組織内の混乱が生じた結果、会社の成長が停滞。このまま経営を任せることは難しいと判断し、再構築に着手されました。</p><p>現在、ミニマムで回せる組織体制を整えつつありますが、経営を担うリーダー陣の強化が急務です。現状を「第2創業期」と位置付け、Voicy 2.0としてリスタートを図ります。これまでの反省を踏まえ、選択と集中を進めながら、「社会を豊かにする」という本来のビジョンに立ち戻られています。また、上場を見据え、2025年2月からN-2期（上場2期前）を計画的に進めています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 COO事業責任者（幹部・執行役員・取締役候補）</div>
+          <div class="job-preview">音声プラットフォームVoicyの事業グロースを担うCOO候補ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>Change our Future with Voice. 声で、未来を変える。</strong><br>当社は、国内最大級の音声プラットフォーム&quot;Voicy&quot;の開発、運営をしています。2016年のローンチから順調にサービスを拡大し、これまでに累計36億円の資金調達を完了しました。</p><p>音声テック市場を日系パイオニアとして牽引するVoicyでは、産業を0ベースで創るという難易度高くもやりがいの大きいフェーズを体験できます！</p><p><strong>■COO候補として、事業グロースをお任せします。</strong><br>まずは事業責任者としてメンバーと共に下記業務を推進いただき、実績に応じて半年から一年ほどでCOOへ就任いただくことを想定しています。</p><p><strong>具体的には：</strong></p><ul><li>ビジネス部門の統括、全社におけるビジネスラインの戦略設計</li><li>既存事業グロースのための事業計画、営業企画</li><li>音声を活かした商品の新規開発やアライアンスの企画立案、マネタイズ設計、提携先開拓</li><li>ラジオ局や各メディア、官公庁/自治体との事業提携　など</li></ul><p><strong>あなたに求める役割：</strong></p><ul><li>中期戦略の立案/推進</li><li>代表が長期、事業責任者が短期を推進する中で、両者を繋ぐ中期戦略を推進</li><li>音声の事業化に向けた、既存事業の事例づくりやグロースに向けた推進のアジャイル化</li><li>代表が新規事業に専念できる環境づくり（現場の意思決定サポートなど）</li></ul><p><strong>応募資格：</strong></p><p><span class='tag tag-must'>MUST</span> Web/ITサービス系企業もしくは同様のサービスを有する企業にて、COO経験や事業責任者の経験</p><p><span class='tag tag-must'>MUST</span> B2B/B2C問わず事業開発・営業・アライアンス経験<br><span class='tag tag-must'>MUST</span> 事業責任者・経営幹部レベルでの意思決定経験<br><span class='tag tag-must'>MUST</span> 0→1 / 1→10の事業拡張経験</p><p><span class='tag tag-want'>WANT</span> メディア・コンテンツビジネス経験<br><span class='tag tag-want'>WANT</span> SaaS・プラットフォーム事業経験</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.voicy.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://recruit.voicy.jp/" target="_blank">🎯 採用ページ</a><a class="lbtn lbtn-out" href="https://voicy.jp/" target="_blank">🎧 Voicyサービス</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">EC事業責任者候補</span><span class="badge badge-blue">未上場・N-1,N-2</span></div>
+  <div class="co-name">株式会社ソーシャルインテリア</div>
+  <div class="co-url"><a href="https://corp.socialinterior.com/" target="_blank">https://corp.socialinterior.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区南青山2-5-17 POLA青山ビルディング 9F</td></tr><tr><th>設立</th><td>2016年</td></tr><tr><th>上場区分</th><td>未上場</td></tr><tr><th>上場準備状況</th><td>N-1,N-2期（IPO準備フェーズ）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備フェーズ：N-1期</li><li>社長リレーション</li><li>過去複数名入社実績アリ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2016年「家具業界の革命」を志し株式会社subsclifeとして創業。2018年3月に日本で初めて家具のサブスクリプションサービスをローンチ。「インテリアの世界を変える。インテリアで世界を変える。」をミッションに掲げ、3事業を展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2016年「家具業界の革命」を志し株式会社subsclifeとして創業。2018年3月に日本で初めて家具のサブスクリプションサービスをローンチ。</p><p>「インテリアの世界を変える。インテリアで世界を変える。」をミッションに掲げ、「オンライン販売事業」「オフィス構築支援事業」「INTERIOR BASE事業」の3事業を展開しています。&quot;家具のサブスク&quot;という単一モデルから脱却し、現在は INTERIOR BASE事業を成長エンジンとして、事業ポートフォリオの進化を進めています。アナログ業務が多く残るインテリア業界において、生産性向上とイノベーションの実現を加速させ、業界全体の構造変革と持続的な成長に寄与するサービス展開を推進していきます。</p><p>現在は、近年のIPOを見据え、予実達成を前提にいつでも上場可能な体制を整えた&quot;最終準備フェーズ&quot;に入っています。</p><p><strong>▼事業紹介</strong></p><ul><li><strong>オンライン販売事業：</strong>家具・家電のセレクト型オンラインストア「サブスクライフ」(2018年3月開始)は、新品・ヴィンテージ品・中古品・アウトレット品からお気に入りの商品を探せるサービスです。支払い方法をサブスクにすることで、月額で必要な時に必要な分だけ、必要なモノを所有せずに利用することが可能です。</li><li><strong>オフィス構築支援事業：</strong>法人向けの「ソーシャルインテリア オフィス構築支援」は、家具のサブスクリプションサービスに留まらず、オフィス移転から空間デザイン、家具選定までワンストップでサポートするサービスです。</li><li><strong>INTERIOR BASE事業：</strong>設計会社・販売店・メーカー向けの家具什器受発注プラットフォーム「INTERIOR BASE」は、国内外のオフィス什器から海外のハイエンド家具まで、国内最大級の商品情報データベースを基に、スペックイン業務を大幅に効率化するサービスです。</li></ul><p>町野代表は外資系大手コンピュータ会社（HP)、株式会社マクロミルを経て、2012年に株式会社グライダーアソシエイツを設立。同社がリリースしたオンラインキュレーションマガジンは、3年で400万ユーザー獲得というブレイクを果たし2015年KAMARQに参画。翌年子会社のsubsclifeを立ち上げられました。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 EC事業：事業責任者候補</div>
+          <div class="job-preview">家具・インテリア事業の個人向け・富裕層向けEC事業を牽引する責任者</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>※家具・インテリア事業の未来を共に切り拓く事業責任者を募集します※</strong></p><p>私たちは、家具を中心とした個人向けおよび富裕層向けのインテリアをオンラインで販売する、日本で唯一のサービスを展開しています！一括販売、サブスクリプション販売、そしてユーズド家具販売を一つのプラットフォームで実現し、国内600ブランド以上の厳選された家具や照明、雑貨を取り揃えています。ブランド家具をはじめ、質の高いライフスタイルアイテムを提供することで、多くのお客様から支持を得ています。</p><p>さらに、2025年以降はさらなる成長を目指し、富裕層向けの個別提案サービスを拡充する計画を進めています。その一環として、販売事業を牽引し、私たちと共にこの挑戦を成功へ導いていただける高いモチベーションと達成意識を持った事業責任者を募集します。</p><p>また、私たちは「THE MUSEUM」というBtoB向けのオフィスショールームを所有し、国内外のパートナーや顧客に最先端の提案ができる環境を整えています。今年、住友商事グループの一員となり、強固な基盤をもとにさらなる成長を実現する体制が整いました。</p><p><strong>【お任せする仕事】</strong></p><p><strong>《管理業務》</strong></p><ul><li>EC事業全体の予算/中期事業計画の作成及び実績管理</li><li>EC事業の課題発見、及び課題解決の推進</li><li>EC事業の成長に繋がる新規事業の企画、実行 等</li><li>所属組織メンバーのマネジメント</li><li>事業利益の最大化を推進</li></ul><p><strong>【この仕事の魅力】</strong></p><ul><li>subsclife/subsclifeオフプライスのECサイト運営に関わるディレクション業務全般に関われる</li><li>売上の拡大、及び利益の観点も考えながら長期的な会社運営ができる</li></ul><p><strong>応募資格：</strong></p><p><span class='tag tag-must'>MUST</span> EC事業の立ち上げ責任者または、運営責任者経験必須（家具の知識あれば優遇あり）</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.socialinterior.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://socialinterior.com/" target="_blank">🛋️ サブスクライフ</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">新規事業開発</span><span class="badge badge-blue">未上場・N-4以前</span></div>
+  <div class="co-name">株式会社トーガシ</div>
+  <div class="co-url"><a href="https://www.tohgashi.co.jp" target="_blank">https://www.tohgashi.co.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都中央区新富2-14-4　住友新富ビル 2F</td></tr><tr><th>設立</th><td>1965年創業、2000年法人化</td></tr><tr><th>売上高</th><td>67億円（2025年1月期末予定）</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1965年に創業し、2000年に法人化された会社です。展示会やイベントの企画から設計、施工、そして運営までをすべて自社で手がけている、まさに"総合イベントプロデュース企業"と呼べる存在です。年間3,000件以上のイベントを手がけていて、2025年1月期末には売上高67億円を達成。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1965年に創業し、2000年に法人化された会社です。展示会やイベントの企画から設計、施工、そして運営までをすべて自社で手がけている、まさに&quot;総合イベントプロデュース企業&quot;と呼べる存在です。年間3,000件以上のイベントを手がけていて、2025年1月期末には売上高67億円（23年60億➡24年63億円）を達成。その実績からも、堅実かつ着実に成長を続けている様子が伺えます。</p><p>特に注目したいのが、企画から運営までをワンストップで提供できる体制。社内には多くの専門職の方が在籍していて、各職種が密に連携しながらイベントを形にしていく力が、トーガシの大きな強みになっています。たとえば、Web3業界の注目イベント「WebX」や、参加者4万人を超えるビジネスカンファレンス「Climbers 2025」といった大型案件にも関わっており、その実績からも、業界内での評価の高さが感じられます。（就職イベントはほぼ独占）</p><p>現在、今後の株式上場（IPO、現在N-3）を視野に入れながら、社内の管理体制をより一層強化していこうとされています。その中でも、新規事業部門（成長戦略推進室）、経理部門、情報システム部門については、今後の体制づくりに向けて人員の強化が大きなテーマとなっています。</p><p><strong>代表取締役　吉田守克氏</strong><br>1982年に三井物産株式会社へご入社以来、国内外の事業投資や開発を手がけてこられた。情報産業分野では海外スタートアップとのジョイントベンチャー設立に携わるなど、先進的な取り組みに多く関わってこられました。その後、2006年にトーガシへ参画。以来、長く続くイベント施工会社を、単なる&quot;作る会社&quot;から&quot;戦略的にプロデュースする会社&quot;へと変えていく大きな改革をリードされています。最近では、Web3、NFT、バーチャル空間といった新しい技術領域にも積極的に挑戦されており、「展示・イベントの在り方そのものを変えていく」という強いビジョンのもと、これまでの業界常識にとらわれない柔軟かつ革新的な経営スタイルを貫いていらっしゃいます。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 新規事業開発（販促プロモーションプランナー）</div>
+          <div class="job-preview">体験型プロモーションの戦略設計から実装・分析まで一気通貫で推進する新規事業立ち上げ</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■募集背景</strong><br>当社はこれまで、イベント・展示会における空間の企画・デザイン・施工・運営までを一気通貫で手がけ、年間2,700件超の実績を積み重ねてきました。今後はこの「現場実装力」を強みに、体験型プロモーションを&quot;成果&quot;に変える新規事業を立ち上げます。戦略設計から現場実装、データ分析までを一貫して担い、改善を回し続ける&quot;伴走型モデル&quot;の中核人材を募集します。</p><p><strong>■業務内容</strong><br>「体験型プロモーション」を、戦略設計 → 実装 → 分析 → 改善まで一気通貫で推進していただきます。</p><p><strong>▼具体業務</strong></p><p><strong>①戦略設計（上流設計）</strong></p><ul><li>クライアント課題の構造化（目的／KGI・KPI設計）</li><li>体験コンセプト・ストーリー設計</li><li>計測設計（リアル×オンラインのデータ設計）</li><li>提案書作成・プレゼンテーション</li></ul><p><strong>②現場実装（プロジェクト推進）</strong></p><ul><li>企画を現場条件（導線・運営・安全）に落とし込み</li><li>制作・デザインと連携した実装ディレクション</li><li>品質・スケジュール・予算の管理</li></ul><p><strong>③データ分析・改善</strong></p><ul><li>行動ログ／アンケート等のデータ分析</li><li>成果レポート作成（要因分析・改善提案）</li><li>次回施策への改善提案・継続提案</li></ul><p><strong>▼プロジェクト例</strong><br>ポップアップイベント、展示会・ブランド体験施策、店頭プロモーション、ショールーム運用</p><p><strong>応募資格：</strong></p><p><span class='tag tag-must'>MUST</span> セールスプロモーション／広告／PR／イベント／マーケ領域での企画提案経験（目安3年以上）<br><span class='tag tag-must'>MUST</span> クライアント折衝・提案書作成・プレゼン経験<br><span class='tag tag-must'>MUST</span> 関係者を巻き込んだプロジェクト推進経験<br><span class='tag tag-must'>MUST</span> KPI設計や効果検証に基づく改善提案経験（または強い関心）</p><p><span class='tag tag-want'>WANT</span> 体験設計・イベント／空間領域の知見<br><span class='tag tag-want'>WANT</span> デジタル施策（SNS・動画・LP等）の統合提案経験<br><span class='tag tag-want'>WANT</span> データ分析・可視化・レポーティング経験<br><span class='tag tag-want'>WANT</span> 新規事業・チーム立ち上げ経験<br><span class='tag tag-want'>WANT</span> 外部パートナーのディレクション経験</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.tohgashi.co.jp" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが白川政志 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
